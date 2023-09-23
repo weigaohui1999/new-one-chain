@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view />
+    <my-footer />
   </div>
 </template>
-
+<script>
+import { addTag } from "@/static/util/evaluate";
+import config from "@/static/data/config";
+export default {
+  mounted() {
+    addTag(
+      config().jumpToEvaluate.appCode,
+      config().jumpToEvaluate.appName,
+      config().region.code,
+      config().region.name,
+      config().abilityCode,
+      config().organCode
+    );
+  },
+};
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  min-height: 100vh;
+  background-color: #f5f7fb;
 }
 </style>
+<script setup>
+import MyFooter from "@/components/Footer/index.vue";
+</script>

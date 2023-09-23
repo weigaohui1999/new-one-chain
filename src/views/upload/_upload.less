@@ -1,0 +1,32 @@
+.upload {
+  padding: 10px;
+  .page-form {
+    .page-form-group {
+      padding: 0.2051rem;
+      border-radius: 0.2051rem;
+      overflow: hidden;
+      margin-top: 0.2051rem;
+      box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.08);
+      .tc {
+        color: #4484f2;
+        font-weight: 700;
+      }
+      .no-padding {
+        padding: 10px 0;
+      }
+    }
+  }
+}
+
+.no-padding-field {
+  padding: 0 16px;
+  /deep/.van-field__control {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  /deep/.van-button--mini {
+    padding: 0 0.36rem !important;
+    min-width: 80px;
+    font-size: 0.3rem;
+  }
+}

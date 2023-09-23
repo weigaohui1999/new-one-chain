@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="76" height="76" viewBox="0 0 76 76">
+    <defs>
+        <clipPath id="clip-path">
+            <rect id="矩形_1" data-name="矩形 1" width="36.615" height="28.012" fill="none"/>
+        </clipPath>
+    </defs>
+    <g id="组_32" data-name="组 32" transform="translate(-94 -154)">
+        <circle id="椭圆_1" data-name="椭圆 1" cx="38" cy="38" r="38" transform="translate(94 154)" fill="#ffecec"/>
+        <g id="组_3" data-name="组 3" transform="translate(-309.308 47.994)">
+            <g id="组_2" data-name="组 2" transform="translate(423 130)">
+                <g id="组_1" data-name="组 1" transform="translate(0 0)" clip-path="url(#clip-path)">
+                    <path id="路径_1" data-name="路径 1" d="M454.07,130.52H424.65a1.784,1.784,0,0,0-1.772,1.8v20.4a1.784,1.784,0,0,0,1.772,1.784h29.42a1.784,1.784,0,0,0,1.772-1.784v-20.4a1.784,1.784,0,0,0-1.772-1.8Zm-14.448,6.912h4.891a.973.973,0,0,1,.961.973.961.961,0,0,1-.961.961h-4.891a.948.948,0,0,1-.961-.961.961.961,0,0,1,.961-.973Zm-8.409-1.7a3.132,3.132,0,1,1-3.119,3.132,3.132,3.132,0,0,1,3.119-3.132Zm-4.1,13.574c0-3.244,1.834-5.876,4.1-5.876s4.142,2.633,4.142,5.876Zm24.217.075h-11.7a.961.961,0,0,1,0-1.921h11.7a.961.961,0,1,1,0,1.921Zm0-4.991h-11.7a.973.973,0,0,1,0-1.934h11.7a.973.973,0,1,1,0,1.934Zm0,0" transform="translate(-422.883 -130.502)" fill="#f26666"/>
+                </g>
+            </g>
+            <rect id="矩形_2" data-name="矩形 2" width="32.352" height="2.146" transform="translate(427.213 155.832)" fill="#f99"/>
+            <rect id="矩形_3" data-name="矩形 3" width="2.146" height="23.967" transform="translate(457.456 134.01)" fill="#f99"/>
+        </g>
+    </g>
+</svg>
