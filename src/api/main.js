@@ -78,6 +78,21 @@ export const getGateV4 = async (key, params, option = {}) => {
   }
 };
 
+export const commonRequest = async (url, param) => {
+  try {
+    return await RGApi.request({
+      method: "post",
+      url: url,
+      data: { param: JSON.stringify(param) },
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+  } catch (error) {
+    Notify({ type: "warning", message: "发送失败" });
+  }
+};
+
 const defaultParamsV4 = (key) => {
   return {
     from: 3,

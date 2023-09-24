@@ -3,8 +3,8 @@ class config {
   organCode = "5267b0f20ffa47d68f7a7054aab8e41c";
   abilityCode = "0272a09bed4140f2844579aacf01ef4f";
   region = {
-    code: "360981000000",
-    name: "丰城市行政服务中心",
+    code: "360222000000",
+    name: "浮梁县行政服务中心",
   };
   interface_id = {
     // 按持证人用证
@@ -78,6 +78,121 @@ class config {
     //  办件数据添加
     add: "92936b0dc50b4ea9948cad471e4cf6cf",
   };
+
+  dataList = [
+    {
+      img: require("@/static/image/kbdyyyjs.png"),
+      name: "农民建房一件事",
+      url: "https://ganfutong.jiangxi.gov.cn/jmopen/webapp/html5/flxnmjfyjs/index.html",
+      flowId: "404A3AFEB94D4583A0C71C1FBE62A527",
+    },
+    {
+      img: require("@/static/image/jdchzyjs.png"),
+      name: "农房确权登记一件事",
+      flowId: "B6DB75E8952E4256A5659D24DF4378E7",
+    },
+    {
+      img: require("@/static/image/sbkyjs.png"),
+      name: "民宿驿站办一件事",
+      flowId: "F5DA699046964891AC27008013A3A056",
+    },
+    {
+      img: require("@/static/image/rs.png"),
+      name: "残疾人创业扶持一件事",
+      flowId: "879ABBCE5C6A45D49E3EFA6C06B7D17D",
+    },
+    {
+      img: require("@/static/image/syyjs.png"),
+      name: "扶残助残一件事",
+      flowId: "031C072825214D75B7C82B02E5B9D3C4",
+    },
+    {
+      img: require("@/static/image/syzfyjs.png"),
+      name: "申领社会保障卡一件事",
+      flowId: "FE335BF896654D8C9F8EFA6A934AC5CF",
+    },
+    {
+      img: require("@/static/image/hqgsyjs.png"),
+      name: "申领工亡人员有关待遇一件事",
+      flowId: "E60ADFE7488F44C0988299BFD5612974",
+    },
+    {
+      img: require("@/static/image/yb.png"),
+      name: "医疗报销一件事",
+      flowId: "E899E5A06C8A43DD90E7A589A5B16950",
+    },
+    {
+      img: require("@/static/image/wglhwg.png"),
+      name: "生育津贴申领",
+      flowId: "A92FBD31F15A48E085BF1B2949DB6969",
+    },
+    {
+      img: require("@/static/image/gsjzyjs.png"),
+      name: "困难人员救助",
+      flowId: "8D1A7252FF3543A891AA0D9FDACA115E",
+    },
+    {
+      img: require("@/static/image/syyjs.png"),
+      name: "退休人员过世一件事",
+      flowId: "15065467089B4642BABB1FDECBBE42B5",
+    },
+    {
+      img: require("@/static/image/rs.png"),
+      name: "退休人员过世（灵活就业）",
+      flowId: "448B13541BC24DB6B1135E3D82FFEFBA",
+    },
+    {
+      img: require("@/static/image/yb.png"),
+      name: "补贴申领",
+      flowId: "AEE7550F34F44B768527784087CC9A60",
+    },
+    {
+      img: require("@/static/image/zgjyyjs.png"),
+      name: "职工退休一件事",
+      flowId: "761AD549294348478A8661AAA36E12E0",
+    },
+    {
+      img: require("@/static/image/gsjzyjs.png"),
+      name: "退役军人一件事",
+      flowId: "ACDBE4AD595448E9886199BE3B12A9B3",
+    },
+    {
+      img: require("@/static/image/syzfyjs.png"),
+      name: "企业与员工解除终止劳动合同一件事",
+      url: "https://ganfutong.jiangxi.gov.cn/jmopenpub/jmopen_files/webapp/html5/qyyygjczzldhtyjsreqys/index.html",
+      flowId: "3FCB68EC450F4F638199AFE159C38DE0",
+    },
+    {
+      img: require("@/static/image/rcyjs.png"),
+      name: "创业一件事",
+      url: "https://ganfutong.jiangxi.gov.cn/jmopenpub/jmopen_files/webapp/html5/cyyjshcnox/index.html",
+      flowId: "68FB0983879342DCB9C8AA40332CF50D",
+    },
+    {
+      img: require("@/static/image/gsjzyjs.png"),
+      name: "失业一件事",
+      url: "https://ganfutong.jiangxi.gov.cn/jmopenpub/jmopen_files/webapp/html5/syyjsfxfse/index.html",
+      flowId: "C1C9153386634C419667DE94DE166A7B",
+    },
+    {
+      img: require("@/static/image/sbkyjs.png"),
+      name: "员工录用一件事",
+      url: "https://ganfutong.jiangxi.gov.cn/jmopenpub/jmopen_files/webapp/html5/qyzyygyjsilrsj/index.html",
+      flowId: "12FD3FEEF25F4A6E8E7D31D0101D38F8",
+    },
+    {
+      img: require("@/static/image/jyyjs.png"),
+      name: "事业单位招聘工作人员一件事",
+      url: "https://ganfutong.jiangxi.gov.cn/jmopenpub/jmopen_files/webapp/html5/sydwzpgzryyjsrrvui/index.html",
+      flowId: "DC90CD200EB2433A97718EA7953E945E",
+    },
+    {
+      img: require("@/static/image/gkydyjs.png"),
+      name: "灵活就业一件事",
+      url: "https://ganfutong.jiangxi.gov.cn/jmopenpub/jmopen_files/webapp/html5/sydwzpgzryyjsrrvui/index.html",
+      flowId: "477A2F42210E49F793B57A8E47617141",
+    },
+  ];
 
   getJumpToEvaluate = () => {
     return {

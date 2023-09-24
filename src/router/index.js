@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "../views/home/index.vue";
 import Schedule from "../views/schedule/schedule.vue";
 import Detail from "../views/detail/detail.vue";
+import Select from "../views/select/select.vue";
 import Upload from "../views/upload/upload.vue";
 
 Vue.use(VueRouter);
@@ -22,6 +23,11 @@ const routes = [
     path: "/detail/:flowId",
     name: "detail",
     component: Detail,
+  },
+  {
+    path: "/select/:flowId",
+    name: "select",
+    component: Select,
   },
   {
     path: "/upload",

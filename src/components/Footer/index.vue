@@ -11,7 +11,7 @@ export default {
 
 <template>
   <div class="rg-footer">
-    <img src="@/static/image/index/gft.png" class="logo" alt="赣服通" />
+    <!--    <img src="@/static/image/index/gft.png" class="logo" alt="赣服通" />-->
     <p class="provider">{{ provider }}</p>
   </div>
 </template>
