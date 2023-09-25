@@ -104,7 +104,7 @@ const defaultParamsV4 = (key) => {
 
 const defaultParams = (key, params, header) => {
   return {
-    app_id: "fcsgpsx",
+    app_id: process.env.VUE_APP_TAG,
     interface_id: key,
     version: process.env.VUE_APP_VERSION,
     charset: "UTF-8",

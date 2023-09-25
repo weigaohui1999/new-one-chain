@@ -10,7 +10,7 @@
         <van-cell-group v-for="(item, index) in navList" :key="index" border>
           <van-cell :title="item.name" is-link @click="toApply(item)">
             <template #icon>
-              <img :src="require('@/static/image/kbdyyyjs.png')" alt="" />
+              <img :src="item.img" alt="" />
             </template>
           </van-cell>
         </van-cell-group>
