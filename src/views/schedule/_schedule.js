@@ -1,5 +1,5 @@
 // @vue/component
-import { getGateV4 } from "@/api/main";
+import { getGate } from "@/api/main";
 import config from "@/static/data/config";
 import { Notify } from "vant";
 
@@ -69,7 +69,7 @@ export default {
     },
     async getUserBusRecord() {
       try {
-        const { data } = await getGateV4(config().main.selectStatus, {
+        const { data } = await getGate(config().main.selectStatus, {
           bizId: this.search,
         });
         if (data.state == 200) {

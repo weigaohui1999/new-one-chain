@@ -2,7 +2,7 @@
 import { storage } from "@/libs/plugin";
 import utils from "@/libs/utils";
 import { Dialog, Notify } from "vant";
-import { getGate, getGateV4 } from "@/api/main";
+import { getGate, getGateV4, upload } from "@/api/main";
 import config from "@/static/data/config";
 import fileClient from "@/libs/fileClient";
 
@@ -96,13 +96,24 @@ export default {
   watch: {},
 
   created() {
-    this.renderData();
-    this.getAuthCode();
+    this.getApplicationInfo();
+    // this.renderData();
+    // this.getAuthCode();
   },
 
   methods: {
+    async getApplicationInfo() {
+      const param = storage.get("flowObj");
+      const res = await getGate(config().main.getDeclareDetail, param);
+      if (res.code == 200) {
+        const { data } = JSON.parse(res.data);
+        this.chainDetail = data;
+        this.renderData();
+      }
+    },
     renderData() {
-      this.chainDetail = storage.get("chainDetail");
+      console.log(this.chainDetail);
+      // this.chainDetail = storage.get("chainDetail");
       this.orgCode = this.chainDetail.itemArray[0].orgCode;
       this.xmmc = this.chainDetail.flowName;
       this.ywbz = this.chainDetail.itemArray[0].itemName;
@@ -252,14 +263,17 @@ export default {
       this.authKey = key;
     },
     async afterRead(fileObj, item, index) {
+      console.log(fileObj);
       fileObj.status = "uploading";
       fileObj.message = "上传中...";
       try {
-        const { data } = await getGateV4(config().main.upload, {
-          base64: fileObj.content,
-          fileName: item.resourceName + ".jpg",
+        let { data } = await upload(config().main.upload, {
+          file: fileObj.content.split(",")[1],
+          filename: item.resourceName + ".jpg",
         });
-        if (data && data.code == "0000") {
+        data = JSON.parse(data);
+        console.log(data);
+        if (data && data.msg == "OK") {
           // res.data = JSON.parse(res.data);
           fileObj.status = "done";
           fileObj.message = "上传完成";
@@ -269,7 +283,7 @@ export default {
             resourceCode: stuff.resourceCode,
             resourceType: stuff.resourceType,
             fileName: stuff.resourceName,
-            filePath: data.filePath,
+            filePath: `http://10.129.8.71:8090/WebDiskDemo/doc?doc_id=${data.docid}`,
             itemId: stuff.itemId,
             itemCode: stuff.itemCode,
             fileType: "1",
@@ -351,20 +365,19 @@ export default {
     async onSubmit() {
       let materials = [];
       this.stuff.forEach((item) => {
-        item.update.map((it) => {
-          materials.push(it.data);
-        });
+        if (item.update && item.update.length > 0) {
+          item.update.map((it) => {
+            materials.push(it.data);
+          });
+        }
       });
       this.info.material = materials;
       this.loading = true;
       // 获取dataId
-      const res = await getGateV4(config().main.declare, {
+      const res = await getGate(config().main.declare, {
         enterprise: this.info,
       });
-      if (res.code === 0) {
-        this.localSto(res.data.receiveId);
-        //办件量添加
-        this.bjadd(this.bjm_jgm[0], this.bjm_jgm[1]);
+      if (res.code === 200) {
         this.loading = false;
         Dialog.alert({
           title: "提交成功",
@@ -377,7 +390,7 @@ export default {
       } else {
         this.loading = false;
         Notify({
-          type: "ywu",
+          type: "warning",
           message: "提交数据失败, 请稍后重试！",
         });
       }
@@ -429,6 +442,6 @@ export default {
   },
 
   destroyed() {
-    storage.set("chainDetail", {});
+    storage.set("flowObj", {});
   },
 };

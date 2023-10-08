@@ -33,6 +33,24 @@ export const getGate = async (key, params, header = {}) => {
   }
 };
 
+export const upload = async (key, params, header = {}) => {
+  const data = defaultParams(key, params, header);
+  try {
+    const res = await getSign(data);
+    data["sign"] = res.data.sign;
+    return RGApi.request({
+      method: "post",
+      url: process.env.VUE_APP_API_GATEURL,
+      data,
+      headers: {
+        "Content-Type": "multipart/form-data;",
+      },
+    });
+  } catch (error) {
+    Notify({ type: "warning", message: "验签未通过，请稍后重试！" });
+  }
+};
+
 export const gateFile = async (key, params) => {
   //  配置赣服通参数
   const data = defaultParams(key, {}, {});

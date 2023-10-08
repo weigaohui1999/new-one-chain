@@ -7,13 +7,23 @@
     </div>
     <div class="content">
       <div class="contbox">
-        <van-cell-group v-for="(item, index) in navList" :key="index" border>
-          <van-cell :title="item.name" is-link @click="toApply(item)">
-            <template #icon>
-              <img :src="item.img" alt="" />
-            </template>
-          </van-cell>
-        </van-cell-group>
+        <div class="content-item" v-for="(item, index) in navList" :key="index">
+          <div class="item-hd">
+            <img :src="require(`@/static/image/${index}.png`)" alt="" />
+            <div class="title-name">{{ item.flowName }}</div>
+          </div>
+          <div class="item-btn">
+            <van-button
+              size="small"
+              @click="toDetail(item.flowId)"
+              style="margin-right: 16px"
+              >办事指南</van-button
+            >
+            <van-button size="small" @click="toApply(item.flowId)"
+              >立即办理</van-button
+            >
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -22,14 +32,13 @@
 <script>
 import config from "@/static/data/config";
 import userApi from "@/api/user";
-import { getGateV4 } from "@/api/main";
+import { getGate, getGateV4 } from "@/api/main";
 
 export default {
   name: "Home",
   data() {
     return {
-      navList: config().dataList,
-      // navList: [],
+      navList: [],
     };
   },
   created() {
@@ -37,34 +46,33 @@ export default {
     userApi.getUserInfo();
   },
   methods: {
-    toSchedule() {
-      this.$router.push("/schedule");
-    },
     async getList() {
       try {
-        const res = await getGateV4(config().main.getScene, {
+        this.loading = true;
+        const res = await getGate(config().main.getScene, {
           regionCode: "360222000000",
           parentId: "0",
         });
-        if (res.data.state == 200) {
-          for (let item of res.data.info) {
-            let obj = {};
-            obj.title = item.flowName;
-            obj.flowId = item.flowId;
-            this.navList.push(obj);
-          }
+        if (res.code == 200) {
+          const { data } = JSON.parse(res.data);
+          this.navList = data;
+          console.log(data);
+        } else {
+          this.loading = false;
         }
-      } catch (e) {
-        console.log(e);
-        this.$notify({ type: "danger", message: "拉取数据失败！" });
+      } catch (err) {
+        this.loading = false;
+        console.log("err", err);
       }
     },
-
-    // toDetail(flowId) {
-    //   this.$router.push(`/detail/${flowId}`);
-    // },
-    toApply(item) {
-      this.$router.push(`/select/${item.flowId}`);
+    toSchedule() {
+      this.$router.push("/schedule");
+    },
+    toDetail(flowId) {
+      this.$router.push(`/detail/${flowId}`);
+    },
+    toApply(flowId) {
+      this.$router.push(`/select/${flowId}`);
     },
   },
 };

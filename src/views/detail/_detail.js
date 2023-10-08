@@ -1,5 +1,5 @@
 // @vue/component
-import { getGateV4 } from "@/api/main";
+import { getGate } from "@/api/main";
 import config from "@/static/data/config";
 import { storage } from "@/libs/plugin";
 
@@ -40,11 +40,10 @@ export default {
     async getChainId() {
       try {
         this.loading = true;
-        const { data } = await getGateV4(config().main.getScene, {
-          regionCode: "360981000000",
-          parentId: this.flowId,
+        const { data } = await getGate(config().main.getHandbook, {
+          flowId: this.flowId,
         });
-        if (data.state == 200) {
+        if (data.code == 200) {
           this.chainId = data.info[0].flowId;
           this.getItemId();
         } else {

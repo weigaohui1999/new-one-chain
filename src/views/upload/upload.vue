@@ -1,6 +1,11 @@
 <template>
   <div class="upload" v-loading="loading">
-    <van-form @submit="onSubmit" class="page-form">
+    <van-form
+      @submit="onSubmit"
+      validate-trigger="onSubmit"
+      class="page-form"
+      ref="form"
+    >
       <van-cell-group class="page-form-group">
         <van-cell title="基本信息" title-class="tc" />
         <van-field
@@ -45,6 +50,50 @@
           required
           placeholder="请填写联系地址"
           :rules="[{ required: true }]"
+        />
+      </van-cell-group>
+      <van-cell-group class="page-form-group">
+        <van-cell title="材料结果领取信息" title-class="tc" />
+        <van-field
+          name="isEms"
+          label="领取方式"
+          required
+          :rules="[{ required: true }]"
+        >
+          <template #input>
+            <van-radio-group
+              v-model="info.emsInfo.isEms"
+              direction="horizontal"
+            >
+              <van-radio name="1">邮寄</van-radio>
+              <van-radio name="0">自取</van-radio>
+            </van-radio-group>
+          </template>
+        </van-field>
+        <van-field
+          v-model="info.emsInfo.emsName"
+          v-if="info.emsInfo.isEms == 1"
+          name="emsName"
+          label="收件人姓名"
+          required
+          :rules="[{ required: true, message: '请输入收件人姓名' }]"
+        />
+        <van-field
+          v-model="info.emsInfo.emsPhone"
+          v-if="info.emsInfo.isEms == 1"
+          name="emsPhone"
+          label="收件人电话"
+          required
+          :rules="[{ required: true, message: '请输入收件人电话' }]"
+        />
+        <van-field
+          v-model="info.emsInfo.emsAddress"
+          v-if="info.emsInfo.isEms == 1"
+          type="textarea"
+          name="emsAddress"
+          label="收件地址"
+          required
+          :rules="[{ required: true, message: '请输入收件地址' }]"
         />
       </van-cell-group>
       <van-cell-group class="page-form-group">
@@ -93,14 +142,13 @@
           </van-field>
         </van-cell>
       </van-cell-group>
+      <van-button
+        style="margin-top: 10px; width: 100%"
+        type="info"
+        native-type="submit"
+        >提交</van-button
+      >
     </van-form>
-    <van-button
-      style="margin-top: 10px; width: 100%"
-      type="info"
-      native-type="submit"
-      @click="onSubmit"
-      >提交</van-button
-    >
     <van-action-sheet
       v-model="showAuth"
       :actions="authCards"
